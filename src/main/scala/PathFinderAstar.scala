@@ -54,7 +54,7 @@ final class PathFinderAstar(
       expand(visiting).iterator.filter(!settled.contains(_)).foreach { expandedNode =>
         val visitingToExpandedCost = costFunction(parent.get(visiting), visiting, expandedNode)
         val expandedCost = visitingCost + visitingToExpandedCost
-        val expandedCostEstimate = expandedCost + heuristicFunction(visiting)
+        val expandedCostEstimate = expandedCost + heuristicFunction(expandedNode)
         val oldCost = frontier.get(expandedNode)
         if (oldCost.isEmpty || expandedCostEstimate < oldCost.get + heuristicFunction(expandedNode)) {
           // shortest path found
